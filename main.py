@@ -45,10 +45,11 @@ for i in df.index:
 
     # for ele in elem:
     #     print(ele.text)
-    if(len(elem) > 3):
-        company_type = elem[3].text
-    else:
-        company_type = "Not applicable"
+    company_type = "private"
+    for ele in elem:
+        if ele.text.find("Public") != -1:
+            company_type = "public"
+
 
     company_size = browser.find_element_by_class_name("org-about-company-module__company-size-definition-text").text
     # print(company_size.text)
